@@ -42,7 +42,11 @@ def is_prime(n):
     return True
 
 def is_perfect(n):
-    return sum(i for i in range(1, n) if n % i == 0) == n
+    if n <= 0:  # 0 and negative numbers are not perfect numbers
+        return False
+    divisors_sum = sum(i for i in range(1, n) if n % i == 0)
+    return divisors_sum == n
+
 
 def is_armstrong(n):
     return sum(int(d) ** len(str(n)) for d in str(abs(n))) == n
